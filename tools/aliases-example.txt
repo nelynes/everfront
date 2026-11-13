@@ -1,0 +1,4 @@
+# For make_pack.py --alias: one line per rom whose name doesn't match a scan.
+# rom name (no extension) = scan name (no extension)
+Duck Tales = DuckTales (USA)
+Super Mario Land 2 DX = Super Mario Land 2 - 6 Golden Coins (USA, Europe) (Rev 2)

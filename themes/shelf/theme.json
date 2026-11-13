@@ -1,0 +1,190 @@
+{
+  "name": "Shelf",
+  "labels": "labels-80x41.bin",
+  "art": "drawn by make_art.py: dark wall, wooden shelf, realistic small carts, an indigo GBA's slot",
+  "background": {
+    "file": "background.png",
+    "size": [
+      240,
+      160
+    ]
+  },
+  "bar_back": {
+    "file": "console_back.png",
+    "size": [
+      240,
+      34
+    ],
+    "at": [
+      0,
+      126
+    ]
+  },
+  "bar_front": {
+    "file": "console_front.png",
+    "size": [
+      240,
+      34
+    ],
+    "at": [
+      0,
+      126
+    ]
+  },
+  "cart": {
+    "file": "cart.png",
+    "size": [
+      96,
+      58
+    ]
+  },
+  "text_colour": [
+    236,
+    234,
+    244
+  ],
+  "clock_colour": [
+    150,
+    148,
+    176
+  ],
+  "layout": {
+    "label": [
+      8,
+      6,
+      80,
+      41
+    ],
+    "label_colours": 36,
+    "foot_y": 80,
+    "pitch": 104,
+    "side_scale": 1.0,
+    "lift": 7,
+    "side_dim": 5,
+    "spring_omega": 16,
+    "name_row": 13,
+    "clock_row": 0,
+    "clock_col": 24,
+    "system_name": [
+      0,
+      0
+    ],
+    "seated_size": [
+      96,
+      58
+    ],
+    "lip_y": 140,
+    "seated_foot_y": 192,
+    "seat_frames": 27,
+    "eject_frames": 18
+  },
+  "systems": {
+    "gb": {
+      "file": "gb_shelf.png",
+      "size": [
+        76,
+        80
+      ],
+      "label": [
+        11,
+        23,
+        53,
+        46
+      ],
+      "labels": "labels-gb-s.bin",
+      "pitch": 88,
+      "foot_y": 104,
+      "name_row": 15,
+      "background": "background_low.png",
+      "seated_size": [
+        76,
+        80
+      ]
+    },
+    "gbc": {
+      "file": "gbc_shelf.png",
+      "size": [
+        76,
+        80
+      ],
+      "label": [
+        11,
+        23,
+        53,
+        47
+      ],
+      "labels": "labels-gbc-s.bin",
+      "pitch": 88,
+      "foot_y": 104,
+      "name_row": 15,
+      "background": "background_low.png",
+      "seated_size": [
+        76,
+        80
+      ]
+    },
+    "nes": {
+      "file": "nes_shelf.png",
+      "size": [
+        72,
+        80
+      ],
+      "label": [
+        30,
+        1,
+        35,
+        55
+      ],
+      "labels": "labels-nes-s.bin",
+      "pitch": 88,
+      "foot_y": 104,
+      "name_row": 15,
+      "background": "background_low.png",
+      "seated_size": [
+        72,
+        80
+      ]
+    },
+    "gg": {
+      "file": "gg_shelf.png",
+      "size": [
+        80,
+        76
+      ],
+      "label": [
+        7,
+        11,
+        66,
+        46
+      ],
+      "labels": "labels-gg-s.bin",
+      "pitch": 88,
+      "foot_y": 104,
+      "name_row": 15,
+      "background": "background_low.png",
+      "seated_size": [
+        80,
+        76
+      ]
+    },
+    "sms": {
+      "file": "sms_shelf.png",
+      "size": [
+        96,
+        61
+      ],
+      "label": [
+        4,
+        3,
+        88,
+        13
+      ],
+      "labels": "labels-sms-s.bin",
+      "pitch": 104,
+      "seated_size": [
+        96,
+        61
+      ]
+    }
+  }
+}

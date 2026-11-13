@@ -1,0 +1,45 @@
+EverFront - credits and licences
+================================
+
+EverFront
+  Copyright (c) 2026 Nelynes. Licensed under the GNU GPL v3.0 (LICENSE).
+  Parts by others keep their own licences, below.
+
+EverDrive drivers
+  krikzz's EverDrive GBA Pro driver (src/ed, https://github.com/krikzz/gba-pro-pub)
+  and EverDrive GBA mini SD driver (src/edmini, https://github.com/krikzz/gba-ed-pub),
+  MIT licence, Copyright (c) krikzz. src/ed/LICENSE-krikzz, src/edmini/LICENSE.
+
+FatFs (Mini build)
+  FatFs by ChaN (http://elm-chan.org/fsw/ff/), FatFs licence: src/fatfs/LICENSE.txt
+
+Font
+  Unscii 8 by viznut (http://viznut.fi/unscii/), public domain.
+
+Slot theme (themes/slot.thm)
+  Built from the art of Slot (https://github.com/BrandonKowalski/slot),
+  a Game Boy-centric frontend by Brandon Kowalski with art by Markus
+  (https://github.com/MarkusMaribu), as included in slotPlus
+  (https://github.com/nelynes/slotPlus), scaled to 1/3 for the GBA screen.
+  Slot is licensed under the GNU GPL v3.0: licences/Slot-GPL-3.0.txt
+
+Shelf theme (themes/shelf.thm)
+  Original art drawn for EverFront, all of its carts included.
+
+NES, Master System and Game Gear carts (Slot theme)
+  Cart art by Nelynes. The Slot theme's black Master System and Game Gear
+  carts are recoloured from it.
+
+Launching games
+  EverFront starts games the same way the EverDrive's own menu does, so
+  that saves, the clock and the in-game menu behave the same. It contains
+  none of the EverDrive menu's code: the in-game menu is read from the
+  cart's own firmware when a game starts.
+  Game Boy, Game Boy Color, NES, Master System and Game Gear games run
+  through the emulators you put in the EverDrive's own edgba/edapp
+  folders; none are included.
+
+Label art is not included. Label scans are the games' publishers' artwork;
+each user builds their own label packs from their own scans.
+
+EverFront is not made or supported by krikzz or by Slot's authors.

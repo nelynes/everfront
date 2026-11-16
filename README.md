@@ -11,6 +11,7 @@
 
 <p align="center">
   <a href="../../releases/latest"><strong>Download</strong></a> ·
+  <a href="https://nelynes.github.io/everfront/label-maker/"><strong>Label Maker</strong></a> ·
   <a href="GUIDE.md"><strong>User guide</strong></a> ·
   <a href="CHANGELOG.md">What's new</a>
 </p>
@@ -40,11 +41,12 @@ Add an emulator and EverFront gives each system its own shelf, with its own cart
 | **Game Boy** | **NES** (Shelf theme) | **Master System** |
 
 > [!NOTE]
-> **About the labels in these pictures:** EverFront doesn't come with label art or emulators. You add labels from your own scans with the included tool, and until you do, each cart shows a tidy plain label with the game's name. The [user guide](GUIDE.md#label-art) walks you through it.
+> **About the labels in these pictures:** EverFront doesn't come with label art or emulators. The **[Label Maker](https://nelynes.github.io/everfront/label-maker/)** adds labels for you: open your SD card in your browser, check the carts, and write them back. Until then, each cart shows a tidy plain label with the game's name.
 
 ## What you get
 
-- 🎮 **Your games as carts.** Real cart shapes for every system, with your own label art on them.
+- 🎮 **Your games as carts.** Real cart shapes for every system, with real labels on them.
+- 🏷️ **Labels in a couple of clicks.** The [Label Maker](https://nelynes.github.io/everfront/label-maker/) finds a label for every game on your card, right in your browser.
 - 🎨 **Two themes.** Slot and Shelf, switchable in seconds.
 - 📚 **Six systems.** Game Boy Advance, Game Boy, Game Boy Color, NES, Master System and Game Gear.
 - ⭐ **Favourites and recently played.** Mark the games you love and jump back into what you played last.
@@ -57,6 +59,7 @@ Add an emulator and EverFront gives each system its own shelf, with its own cart
 1. **[Download the latest release](../../releases/latest)** and unzip it.
 2. Copy the `everfront` folder onto your EverDrive's SD card.
 3. Start `everfront.gba` from the EverDrive menu.
+4. Want real labels? Open your card in the **[Label Maker](https://nelynes.github.io/everfront/label-maker/)**.
 
 That's all it takes. The **[user guide](GUIDE.md)** covers everything else: the buttons, adding other systems, making labels, and what to do if something isn't right.
 

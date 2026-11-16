@@ -36,6 +36,7 @@ sh build_mini.sh    # everfront-mini.gba (EverDrive GBA X5 Mini)
 | `tools/make_theme.py` | Builds a `.thm` theme file from a `theme.json` |
 | `tools/make_pack.py` | Builds label packs |
 | `test/` | Emulator test builds with a fake SD card (`build_mock.sh`, `build_mock_mini.sh`) |
+| `docs/label-maker/` | The Label Maker, published with GitHub Pages: plain JavaScript modules, no build step. `convert.js` is `make_pack.py`'s conversion and `pack.js` its file format. Art bases can be overridden with `?plusart=`, `?art=`, `?dat=` and `?thumbs=`. |
 
 ## File formats
 

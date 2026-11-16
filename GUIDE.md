@@ -73,9 +73,28 @@ A shelf appears when its system has both an emulator and games. In these games L
 
 ## Label art
 
-Each theme reads one label pack per system from the `everfront` folder on the SD card. You build the packs on a computer from your own label scans, with `make_pack.py` from the release's `label tools` folder. Scans are the publishers' artwork, so no packs are included with EverFront.
+Each theme reads one label pack per system from the `everfront` folder on the SD card. Without them, every cart shows a plain coloured label with the game's name.
 
-### Build the packs
+### The easy way: Label Maker
+
+The **[EverFront Label Maker](https://nelynes.github.io/everfront/label-maker/)** does it all in your browser, with no installs and nothing to type:
+
+1. Put the EverDrive's SD card in your computer, open the Label Maker in **Chrome or Edge**, and click **Open SD card**. Choose the card itself, not a folder on it.
+2. It finds the games on every shelf and identifies each one, by its file name or by reading it. Then it picks the best label for each:
+   1. your own scans, if you add a folder of them
+   2. labels already on your card
+   3. real label scans from the [slotPlus](https://github.com/nelynes/slotPlus-art) and [Slot](https://github.com/BrandonKowalski/slot) art sets
+   4. the game's logo on a colour taken from its box art
+3. Check the carts. On any one, **↻** tries the next label, **＋** uses an image of your own, and **✕** leaves a plain label.
+4. Click **Write labels to card**. It saves every pack into `everfront` on the card.
+
+In Firefox or Safari it can read the card but not write to it, so your labels download as `everfront-labels.zip` instead: copy its `everfront` folder onto the card. Nothing is uploaded anywhere. The first run on a big card takes a little while for games whose file names don't match libretro's database, since those have to be read to identify them. Later runs are quick.
+
+NES and Master System scans are still being gathered into the art set, so for now most of those games get a logo label.
+
+### By hand: make_pack.py
+
+To build packs from your own scans on the command line instead, use `make_pack.py` from the release's `label tools` folder.
 
 1. Install [Python 3](https://www.python.org/downloads/), then run `pip install pillow`.
 2. Collect label scans as PNG files named like your roms, without the extension: `Metroid Fusion (USA).png` for `Metroid Fusion (USA).gba`. A scan named only by its title (`Metroid Fusion.png`) also matches. Keep each system's scans in its own folder.
@@ -90,7 +109,7 @@ Each theme reads one label pack per system from the `everfront` folder on the SD
 
 4. Copy the `.bin` files into `everfront` on the card.
 
-### Pack names and sizes
+#### Pack names and sizes
 
 | System | Slot pack | Slot size | Shelf pack | Shelf size |
 | --- | --- | --- | --- | --- |
@@ -103,7 +122,7 @@ Each theme reads one label pack per system from the `everfront` folder on the SD
 
 A pack built at the wrong size is ignored, and those carts show plain labels.
 
-### Matching scans to roms
+#### Matching scans to roms
 
 | Option | What it does |
 | --- | --- |
@@ -144,7 +163,7 @@ Super Mario Land 2 DX = Super Mario Land 2 - 6 Golden Coins (USA, Europe) (Rev 2
 | "Theme file: wrong format" or another "Theme…" message | The theme file is damaged or from a different version. Copy it again from the same zip as the `.gba`. |
 | "NO GAMES FOUND" | No games in `Game Boy Advance`, `GBA` or the root. Check the folder name and that the games are unzipped. |
 | A system's shelf is missing | Its emulator isn't in `edgba/edapp/<system>/`, or its games folder is empty or named differently. |
-| Plain coloured labels | No label pack for this theme and system, or the scans' names don't match the roms. Rebuild the pack, with `--alias` for renamed roms. |
+| Plain coloured labels | No label pack for this theme and system yet. Run the [Label Maker](https://nelynes.github.io/everfront/label-maker/) on your card. Building by hand, check the scans are named like the roms, or use `--alias`. |
 | An emulated game lost its progress | It was switched off without opening the emulator's menu first (see [Other systems](#other-systems)). |
 | A game won't start, or an error after A | Press B to get back. Try the game from the EverDrive menu to rule out the rom itself. |
 | L+R does nothing in a GBA game | The firmware isn't 26.0127, so the in-game menu is off. |

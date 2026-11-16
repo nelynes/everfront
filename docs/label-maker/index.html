@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>EverFront Label Maker</title>
+  <meta name="description" content="Real cart labels for every game on your EverFront SD card, made in your browser.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="mast">
+    <a class="brand" href="https://github.com/nelynes/everfront">EverFront</a>
+    <nav>
+      <a href="https://github.com/nelynes/everfront/blob/main/GUIDE.md">User guide</a>
+      <a href="https://github.com/nelynes/everfront/releases/latest">Download</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Label Maker</h1>
+      <p class="lede">Real labels for every cart on your shelf. Open your EverDrive's SD card, check what each game gets, and write the labels straight back. Nothing is uploaded: your card stays on your computer.</p>
+    </section>
+
+    <ol class="steps">
+      <li class="step">
+        <h2><span class="num">1</span> Open your SD card</h2>
+        <p>Put the EverDrive's SD card in your computer, then choose the card itself (the drive, not a folder on it).</p>
+        <button id="open" class="primary" type="button">Open SD card</button>
+        <label id="open-files-label" class="primary button" hidden>
+          Choose SD card
+          <input id="open-files" type="file" webkitdirectory multiple hidden>
+        </label>
+        <p id="browser-note" class="small" hidden>Your browser can read the card but not write to it, so your labels will download as a zip to copy over. Chrome or Edge can write them to the card for you.</p>
+      </li>
+
+      <li class="step">
+        <h2><span class="num">2</span> Check the labels</h2>
+        <p>Each game gets the best label found: your own scans first, then labels already on your card, then the <a href="https://github.com/nelynes/slotPlus-art">slotPlus</a> and <a href="https://github.com/BrandonKowalski/slot">Slot</a> art sets, then the game's logo on a colour from its box art. On any cart, <b>↻</b> tries the next label, <b>＋</b> uses an image of your own, and <b>✕</b> leaves a plain label.</p>
+        <label class="button">
+          Add your own scans…
+          <input id="scans" type="file" webkitdirectory multiple hidden>
+        </label>
+        <span id="scans-note" class="small">A folder of label images named like your roms.</span>
+      </li>
+
+      <li class="step">
+        <h2><span class="num">3</span> Write them to the card</h2>
+        <p id="summary" class="small">Open your card to start.</p>
+        <button id="write" class="primary" type="button" disabled>Write labels to card</button>
+      </li>
+    </ol>
+
+    <div class="status-bar">
+      <span id="status" role="status" aria-live="polite"></span>
+      <progress id="progress" max="1" hidden></progress>
+    </div>
+    <div id="notices"></div>
+    <p id="result" class="result" role="status" hidden></p>
+
+    <div id="shelves"></div>
+  </main>
+
+  <footer>
+    <p>Label scans and logos belong to each game's publisher; they're here so you can label carts of games you own. Labels come from the <a href="https://github.com/nelynes/slotPlus-art">slotPlus art set</a> (including scans from <a href="https://www.screenscraper.fr/">ScreenScraper</a>, CC BY-NC-SA 4.0), <a href="https://github.com/BrandonKowalski/slot">Slot</a>'s art set, and <a href="https://github.com/libretro-thumbnails">libretro-thumbnails</a>. Games are identified with <a href="https://github.com/libretro/libretro-database">libretro-database</a> (CC BY-SA 4.0). Logo labels follow <a href="https://github.com/nelynes/slotPlus-studio">Cart Studio+</a>.</p>
+    <p>EverFront is free software under the GPL-3.0. Not affiliated with Nintendo, Sega or krikzz.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

@@ -14,7 +14,7 @@ EverFront is plain C for the GBA (a multiboot-style image that runs from EWRAM),
 ```
 git clone https://github.com/krikzz/gba-pro-pub ../gba-pro-pub
 git clone https://github.com/nelynes/slotPlus ../nelynes/slotPlus
-sh build.sh         # everfront.gba, build/slot.thm, shelf.thm, artbook.thm
+sh build.sh         # everfront.gba, build/slot.thm, shelf.thm, pixel.thm
 sh build_mini.sh    # everfront-mini.gba (EverDrive GBA X5 Mini)
 ```
 
@@ -32,7 +32,7 @@ sh build_mini.sh    # everfront-mini.gba (EverDrive GBA X5 Mini)
 | `src/fatfs/` | FatFs by ChaN (Mini build) |
 | `themes/slot/theme.json` | The Slot theme: layout, plus which Slot art goes where |
 | `themes/shelf/` | The Shelf theme: `make_art.py` draws all of its art |
-| `themes/artbook/` | The Art Book theme: `make_art.py` draws all of its art |
+| `themes/pixel/` | The Pixel theme: `make_art.py` draws its background, frame and consoles, and takes the Shelf theme's carts |
 | `themes/carts/` | Cart art for the other systems |
 | `tools/make_theme.py` | Builds a `.thm` theme file from a `theme.json` |
 | `tools/make_pack.py` | Builds label packs |
@@ -41,5 +41,5 @@ sh build_mini.sh    # everfront-mini.gba (EverDrive GBA X5 Mini)
 
 ## File formats
 
-- **Theme (`.thm`):** magic `EFTH`, version 1. s16 layout parameters, then palette, tiles, maps and cart sections, and a table of per-system carts (size, label area, pitch, foot, name row, optional background). A layout with `"name_on_bar": true` draws the game's name onto the bar's own pixels, in its palette, instead of on a clear row. `tools/make_theme.py` is the reference.
+- **Theme (`.thm`):** magic `EFTH`, version 1. s16 layout parameters, then palette, tiles, maps and cart sections, and a table of per-system carts (size, label area, pitch, foot, name row, optional background). A layout with `"name_on_bar": true` draws the game's name onto the bar's own pixels, in its palette, instead of on a clear row. With `"tint"`, one background picture serves every shelf: tiles drawn only in the tint colours go to one palette bank in a fixed order, and each shelf stores its own 16 colours for that bank after its background map (the SysCart's `tint` field names the bank). `tools/make_theme.py` is the reference.
 - **Label pack (`.bin`):** magic `EFLB`, version 3. Label width, height and colour count, then sorted `{key, offset}` pairs (keys are crc32s of the rom's full name, its title, or its game code), then per label 36 BGR555 colours and one byte per pixel. `tools/make_pack.py` documents it in full.

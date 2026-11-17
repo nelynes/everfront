@@ -14,8 +14,8 @@ python3 themes/carts/make_carts.py themes/carts/art
 python3 themes/carts/make_black.py
 python3 themes/shelf/make_art.py themes/shelf/art
 python3 tools/make_theme.py themes/shelf/theme.json themes/shelf/art build/shelf.thm build/shelf_preview.png
-python3 themes/artbook/make_art.py themes/artbook/art
-python3 tools/make_theme.py themes/artbook/theme.json themes/artbook/art build/artbook.thm build/artbook_preview.png
+python3 themes/pixel/make_art.py themes/pixel/art themes/shelf/art
+python3 tools/make_theme.py themes/pixel/theme.json themes/pixel/art build/pixel.thm build/pixel_preview.png
 CFLAGS="-mcpu=arm7tdmi -mtune=arm7tdmi -mthumb -mthumb-interwork -O2 -Wall -Wno-pointer-sign -ffreestanding -fno-strict-aliasing -fno-tree-loop-distribute-patterns -Isrc"
 OBJS=""
 for f in src/main.c src/plat_pro.c src/launch.c src/mem.c src/ed/everdrive.c src/ed/printf.c src/ed/sys.c src/font.c; do

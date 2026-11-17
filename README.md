@@ -22,10 +22,10 @@ EverFront replaces the EverDrive's list of file names with something that feels 
 
 ## Three themes, one collection
 
-| **Slot** | **Shelf** | **Art Book** |
+| **Slot** | **Shelf** | **Pixel** |
 | :---: | :---: | :---: |
-| ![Slot theme](docs/images/slot-gba.png) | ![Shelf theme](docs/images/shelf-gba.png) | ![Art Book theme](docs/images/artbook-gba.png) |
-| Detailed carts on warm wood, based on the much-loved [Slot](https://github.com/BrandonKowalski/slot) front end. | A clean, flat-shaded shelf with a console waiting underneath. | Bold colour and white line drawings, inspired by [Art Book Next](https://github.com/anthonycaccese/art-book-next-es). |
+| ![Slot theme](docs/images/slot-gba.png) | ![Shelf theme](docs/images/shelf-gba.png) | ![Pixel theme](docs/images/pixel-gba.png) |
+| Detailed carts on warm wood, based on the much-loved [Slot](https://github.com/BrandonKowalski/slot) front end. | A clean, flat-shaded shelf with a console waiting underneath. | Chunky blocks and pixel-art consoles, inspired by the classic [Pixel](https://github.com/RetroPie/es-theme-pixel) theme for EmulationStation. |
 
 Switch between them any time from the settings menu.
 
@@ -47,7 +47,7 @@ Add an emulator and EverFront gives each system its own shelf, with its own cart
 
 - 🎮 **Your games as carts.** Real cart shapes for every system, with real labels on them.
 - 🏷️ **Labels in a couple of clicks.** The [Label Maker](https://nelynes.github.io/everfront/label-maker/) finds a label for every game on your card, right in your browser.
-- 🎨 **Three themes.** Slot, Shelf and Art Book, switchable in seconds.
+- 🎨 **Three themes.** Slot, Shelf and Pixel, switchable in seconds.
 - 📚 **Six systems.** Game Boy Advance, Game Boy, Game Boy Color, NES, Master System and Game Gear.
 - ⭐ **Favourites and recently played.** Mark the games you love and jump back into what you played last.
 - 💾 **Nothing lost.** Saves, the real-time clock, Boktai's solar sensor, tilt games and the EverDrive's in-game menu all work as they do from the EverDrive's own menu. Your saves are shared between the two.
@@ -71,7 +71,7 @@ That's all it takes. The **[user guide](GUIDE.md)** covers everything else: the 
 EverFront stands on other people's work:
 
 - **[Slot](https://github.com/BrandonKowalski/slot)** by Brandon Kowalski, with art by [Markus](https://github.com/MarkusMaribu). The Slot theme is built from their art, with their blessing.
-- **[Art Book Next](https://github.com/anthonycaccese/art-book-next-es)** by Anthony Caccese, whose outline style inspired the Art Book theme (its art is drawn fresh for EverFront).
+- **[Pixel](https://github.com/RetroPie/es-theme-pixel)** by Rookervik, the EmulationStation theme that inspired the Pixel theme (its art is drawn fresh for EverFront).
 - **krikzz**, maker of the EverDrive, for publishing the cart's drivers and giving the project his blessing. EverFront is not made or supported by him.
 - **Nelynes** for EverFront and the NES, Master System and Game Gear cart art.
 

@@ -138,8 +138,9 @@ typedef struct {
     char ext[4], labels[24];
     u32 cart_off, pal_off;
     s16 w, h, lx, ly, lw, lh, sw, sh;
-    s16 pitch, foot_y, name_row, pad;   // 0: the theme's own
-    u32 back_off;                     // the shelf's own background map (BG3), 0: the theme's
+    s16 pitch, foot_y, name_row, tint;  // 0: the theme's own; tint: 1-4 = BG palette bank 0-3 recoloured
+    u32 back_off;                     // the shelf's own background map (BG3), 0: the theme's;
+                                      // with tint, that bank's 16 colours follow the map
 } SysCart;
 #define MAX_SYSCARTS 6
 _Static_assert(sizeof (SysCart) == 64, "SysCart");
@@ -152,7 +153,7 @@ static SysCart th_sys[MAX_SYSCARTS];
 static int th_nsys;
 static u32 th_base_cart_off;
 static u32 th_base_back_off, th_back_shown;   // BG3 map in the theme file: the theme's, and on screen
-static u16 th_base_plastic[16];
+static u16 th_base_plastic[16], th_base_bgpal[64];
 static char th_path[64];
 static u8 th_cart[CART_PX] __attribute__((aligned(4)));
 static u16 th_map_front[600];
@@ -271,6 +272,7 @@ static const char *theme_load(const char *path) {
         goto done;
     }
     for (int k = 0; k < 16; k++) th_base_plastic[k] = PAL[96 + k];
+    for (int k = 0; k < 64; k++) th_base_bgpal[k] = PAL[k];
     // BG3 map: 30x20 into the 32x32 map
     if (plat_seek(sec[2][0]) || plat_read(io_buf, 1200)) { err = "Theme file: read"; goto done; }
     for (int y = 0; y < 32; y++)
@@ -317,6 +319,10 @@ static const char *cart_select(void) {
             th_back_shown = bo;
         }
     }
+    // a recoloured background bank (one picture, each shelf in its own colours)
+    for (int k = 0; k < 64; k++) PAL[k] = th_base_bgpal[k];
+    if (!r && sc && sc->tint >= 1 && sc->tint <= 4 && sc->back_off)
+        r = read_to(0x05000000 + (sc->tint - 1) * 32, sc->back_off + 1200, 32);
     plat_close();
     for (int x = 0; x < 30; x++)                    // the name's old row back to the theme's
         if (old_name_row >= 0 && old_name_row < 20)

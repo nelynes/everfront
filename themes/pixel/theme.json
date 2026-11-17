@@ -1,7 +1,7 @@
 {
-  "name": "Art Book",
+  "name": "Pixel",
   "labels": "labels-80x41.bin",
-  "art": "drawn by make_art.py: black pages, a slanted panel in each system's colour with a white line drawing, outline carts. Inspired by Art Book Next (github.com/anthonycaccese/art-book-next-es)",
+  "art": "drawn by make_art.py: a mosaic of bevelled blocks with a glow in each system's colour, a blocky frame and a pixel-art console per shelf. Inspired by Pixel by Rookervik (github.com/RetroPie/es-theme-pixel)",
   "background": {
     "file": "background_gba.png",
     "size": [
@@ -10,44 +10,50 @@
     ]
   },
   "bar_back": {
-    "file": "slot_back.png",
+    "file": "frame_back.png",
     "size": [
       240,
-      34
+      52
     ],
     "at": [
       0,
-      126
+      108
     ]
   },
   "bar_front": {
-    "file": "slot_front.png",
+    "file": "frame_front.png",
     "size": [
       240,
-      34
+      52
     ],
     "at": [
       0,
-      126
+      108
     ]
   },
   "cart": {
-    "file": "cart_gba.png",
+    "file": "cart.png",
     "size": [
       96,
       58
     ]
   },
   "text_colour": [
-    236,
-    236,
-    240
+    240,
+    240,
+    246
   ],
   "clock_colour": [
-    140,
-    140,
-    150
+    200,
+    200,
+    210
   ],
+  "tint": {
+    "bank": 3,
+    "file": "tints.json",
+    "base": "gba",
+    "neutral": 4
+  },
   "layout": {
     "label": [
       8,
@@ -56,13 +62,14 @@
       41
     ],
     "label_colours": 36,
-    "foot_y": 100,
+    "foot_y": 102,
     "pitch": 104,
-    "side_scale": 0.85,
+    "side_scale": 0.9,
     "lift": 4,
     "side_dim": 6,
     "spring_omega": 16,
-    "name_row": 19,
+    "name_row": 15,
+    "name_on_bar": true,
     "clock_row": 0,
     "clock_col": 24,
     "system_name": [
@@ -73,15 +80,14 @@
       96,
       58
     ],
-    "lip_y": 145,
-    "seated_foot_y": 197,
+    "lip_y": 116,
+    "seated_foot_y": 174,
     "seat_frames": 27,
-    "eject_frames": 18,
-    "name_on_bar": true
+    "eject_frames": 18
   },
   "systems": {
     "gb": {
-      "file": "cart_gb.png",
+      "file": "gb_shelf.png",
       "size": [
         76,
         80
@@ -94,14 +100,15 @@
       ],
       "labels": "labels-gb-s.bin",
       "pitch": 88,
-      "background": "background_gb.png",
       "seated_size": [
         76,
         80
-      ]
+      ],
+      "background": "background_gb.png",
+      "tint": true
     },
     "gbc": {
-      "file": "cart_gbc.png",
+      "file": "gbc_shelf.png",
       "size": [
         76,
         80
@@ -114,14 +121,15 @@
       ],
       "labels": "labels-gbc-s.bin",
       "pitch": 88,
-      "background": "background_gbc.png",
       "seated_size": [
         76,
         80
-      ]
+      ],
+      "background": "background_gbc.png",
+      "tint": true
     },
     "nes": {
-      "file": "cart_nes.png",
+      "file": "nes_shelf.png",
       "size": [
         72,
         80
@@ -134,14 +142,15 @@
       ],
       "labels": "labels-nes-s.bin",
       "pitch": 88,
-      "background": "background_nes.png",
       "seated_size": [
         72,
         80
-      ]
+      ],
+      "background": "background_nes.png",
+      "tint": true
     },
     "gg": {
-      "file": "cart_gg.png",
+      "file": "gg_shelf.png",
       "size": [
         80,
         76
@@ -154,14 +163,15 @@
       ],
       "labels": "labels-gg-s.bin",
       "pitch": 88,
-      "background": "background_gg.png",
       "seated_size": [
         80,
         76
-      ]
+      ],
+      "background": "background_gg.png",
+      "tint": true
     },
     "sms": {
-      "file": "cart_sms.png",
+      "file": "sms_shelf.png",
       "size": [
         96,
         61
@@ -174,11 +184,12 @@
       ],
       "labels": "labels-sms-s.bin",
       "pitch": 104,
-      "background": "background_sms.png",
       "seated_size": [
         96,
         61
-      ]
+      ],
+      "background": "background_sms.png",
+      "tint": true
     }
   }
 }

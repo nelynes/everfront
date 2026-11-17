@@ -111,7 +111,7 @@ To build packs from your own scans on the command line instead, use `make_pack.p
 
 #### Pack names and sizes
 
-| System | Slot pack | Slot size | Shelf and Art Book pack | Shelf and Art Book size |
+| System | Slot pack | Slot size | Shelf and Pixel pack | Shelf and Pixel size |
 | --- | --- | --- | --- | --- |
 | GBA | `labels.bin` | 88x45 (the default) | `labels-80x41.bin` | 80x41 |
 | Game Boy | `labels-gb.bin` | 62x55 | `labels-gb-s.bin` | 53x46 |

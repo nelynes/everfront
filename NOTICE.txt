@@ -26,11 +26,11 @@ Slot theme (themes/slot.thm)
 Shelf theme (themes/shelf.thm)
   Original art drawn for EverFront, all of its carts included.
 
-Art Book theme (themes/artbook.thm)
-  Original art drawn for EverFront. Its look is inspired by the outline
-  style of Art Book Next by Anthony Caccese
-  (https://github.com/anthonycaccese/art-book-next-es); none of that
-  theme's art is used.
+Pixel theme (themes/pixel.thm)
+  Original art drawn for EverFront, with the Shelf theme's carts. Its look
+  is inspired by Pixel by Rookervik, the EmulationStation theme
+  (https://github.com/RetroPie/es-theme-pixel); none of that theme's art
+  is used.
 
 NES, Master System and Game Gear carts (Slot theme)
   Cart art by Nelynes. The Slot theme's black Master System and Game Gear

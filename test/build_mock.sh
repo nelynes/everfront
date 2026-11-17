@@ -22,7 +22,7 @@ files = [] if os.environ.get('NOLABELS') else [('everfront/labels.bin', 'build/l
          ('everfront/labels-80x41.bin', 'build/labels-80x41.bin')]
 files += [
          ('everfront/themes/shelf.thm', 'build/shelf.thm'),
-         ('everfront/themes/artbook.thm', 'build/artbook.thm'),
+         ('everfront/themes/pixel.thm', 'build/pixel.thm'),
          ('everfront/themes/slot.thm', 'build/slot.thm')]
 # other systems: a fake emulator for gb and gbc (none for nes), a few games
 import os

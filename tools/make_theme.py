@@ -113,6 +113,39 @@ def multibank(rgb, banks):
             tiles[t] = (b, tuple(1 + idx[y * sw + i * 8 + x] for y in range(8) for x in range(8)))
     return pals, tiles
 
+def tinted_banks(rgb, tint, tbank, banks):
+    """Like multibank, but tiles drawn only in the tint colours go to bank tbank
+    with those colours in a fixed order (1 + their index), so a shelf can recolour
+    that bank. Every other tile is banked into the remaining banks."""
+    w, h = rgb.size
+    px = rgb.load()
+    tset = {c: i + 1 for i, c in enumerate(tint)}
+    tinted, rest = {}, []
+    for ty in range(h // 8):
+        for tx in range(w // 8):
+            cs = [px[tx * 8 + x, ty * 8 + y] for y in range(8) for x in range(8)]
+            if all(c in tset for c in cs):
+                tinted[(tx, ty)] = (tbank, tuple(tset[c] for c in cs))
+            else:
+                assert not any(c in tset and c not in NEUTRAL for c in cs), f'tile {tx},{ty} mixes tint colours with others'
+                rest.append((tx, ty))
+    strip = Image.new('RGB', (8 * max(1, len(rest)), 8))
+    for i, (tx, ty) in enumerate(rest):
+        strip.paste(rgb.crop((tx * 8, ty * 8, tx * 8 + 8, ty * 8 + 8)), (i * 8, 0))
+    others = [b for b in range(banks) if b != tbank]
+    spals, stiles = multibank(strip, len(others))
+    pals = [None] * banks
+    for i, b in enumerate(others):
+        pals[b] = spals[i]
+    pals[tbank] = [(0, 0, 0)] + list(tint) + [(0, 0, 0)] * (15 - len(tint))
+    out = dict(tinted)
+    for i, t in enumerate(rest):
+        b, tl = stiles[(i, 0)]
+        out[t] = (others[b], tl)
+    return pals, out
+
+NEUTRAL = set()
+
 def pack4(t):
     out = bytearray()
     for y in range(8):
@@ -152,9 +185,23 @@ def main():
     # systems with a background of their own (a lower shelf for taller carts)
     # share the 4 banks: all the backgrounds are banked as one tall picture
     alt_bgs = []
+    tint = t.get('tint')
+    if tint:
+        # "tint": {"bank": 3, "file": "tints.json", "base": "gba", "neutral": 4}: the file
+        # lists each shelf's colours for that bank; the first "neutral" are the same on all
+        tints = {k: [tuple(c) for c in v] for k, v in json.load(open(os.path.join(art, tint['file']))).items()}
+        tcols = tints[tint['base']]
+        NEUTRAL.update(tcols[:tint.get('neutral', 0)])
+        for ext, sd in t.get('systems', {}).items():
+            if sd.get('tint'):
+                sd['tint'] = tints[ext]
+        assert len(tcols) <= 15 and len(set(tcols)) == len(tcols)
     for ext, sd in t.get('systems', {}).items():
         if 'background' in sd:
             abg = third(os.path.join(art, sd['background']), (SW, SH))
+            if tint and 'tint' in sd:                 # drawn in its own colours: back to the base's
+                m = {tuple(a): b for a, b in zip(sd['tint'], tcols)}
+                abg.putdata([m.get(p[:3], p[:3]) + (p[3],) for p in abg.getdata()])
             abg.alpha_composite(back, at)
             alt_bgs.append(ext)
             sd['_bg'] = abg
@@ -162,7 +209,7 @@ def main():
     tall.paste(bg, (0, 0))
     for k, ext in enumerate(alt_bgs):
         tall.paste(t['systems'][ext].pop('_bg'), (0, SH * (1 + k)))
-    pals, wt = multibank(tall.convert('RGB'), 4)
+    pals, wt = tinted_banks(tall.convert('RGB'), tcols, tint['bank'], 4) if tint else multibank(tall.convert('RGB'), 4)
     for b in range(4):
         for i in range(16):
             pal[b * 16 + i] = pals[b][i]
@@ -306,11 +353,15 @@ def main():
             if ext in alt_maps:
                 back_off = extra + len(blobs)
                 blobs += struct.pack('<600H', *alt_maps[ext])
+                if tint and 'tint' in sd:
+                    tc = [tuple(c) for c in sd['tint']]
+                    blobs += struct.pack('<16H', *([0] + [bgr555(c) for c in tc] + [0] * (15 - len(tc))))
             w, h = sd['size']
             sw, sh = sd.get('seated_size', [p['seat_w'], p['seat_h']])
             e = ext.encode()[:3].ljust(4, b'\0') + sd['labels'].encode()[:23].ljust(24, b'\0')
             e += struct.pack('<II8h', cart_off, pal_off, w, h, *sd['label'], min(sw, w), min(sh, h))
-            e += struct.pack('<4hI', sd.get('pitch', 0), sd.get('foot_y', 0), sd.get('name_row', 0), 0, back_off)
+            e += struct.pack('<4hI', sd.get('pitch', 0), sd.get('foot_y', 0), sd.get('name_row', 0),
+                                 tint['bank'] + 1 if tint and 'tint' in sd and back_off else 0, back_off)
             tbl += e.ljust(64, b'\0')
         body_data += tbl + blobs
         params[PARAMS.index('sys_off_lo')] = sys_off & 0xFFFF

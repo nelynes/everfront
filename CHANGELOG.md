@@ -3,7 +3,7 @@
 ## Unreleased
 
 ### Added
-- **Art Book theme:** black pages, a slanted panel in each system's colour with a white line drawing of the console, and outline carts. Inspired by [Art Book Next](https://github.com/anthonycaccese/art-book-next-es). It uses the Shelf theme's label packs, so no new labels are needed.
+- **Pixel theme:** a mosaic of little blocks with a glow in each system's colour, a blocky frame, and a pixel-art console for every shelf. Inspired by Rookervik's [Pixel](https://github.com/RetroPie/es-theme-pixel) theme for EmulationStation. It uses the Shelf theme's carts and label packs, so no new labels are needed.
 - **[Label Maker](https://nelynes.github.io/everfront/label-maker/):** a web page that makes every label pack for your card.
   - Open the SD card in Chrome or Edge, and it finds every game on every shelf and identifies it by file name or checksum.
   - Each game gets the best label available: your own scans, then labels already on the card, then the slotPlus and Slot art sets, then the game's logo on a colour from its box art (as Cart Studio+ makes them).

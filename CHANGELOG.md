@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.8 — 2026-11-17
 
 ### Added
 - **Pixel theme:** a mosaic of little blocks with a glow in each system's colour, a blocky frame, and a pixel-art console for every shelf. Inspired by Rookervik's [Pixel](https://github.com/RetroPie/es-theme-pixel) theme for EmulationStation. It uses the Shelf theme's carts and label packs, so no new labels are needed.

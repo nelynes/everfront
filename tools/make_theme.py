@@ -185,7 +185,8 @@ def main():
     rgb = front.convert('RGB')
     opaque = Image.new('RGB', (sum(a), 1))
     opaque.putdata([p for p, m in zip(rgb.getdata(), a) if m])
-    fcols, _ = quant(opaque, 14)
+    on_bar = bool(lay.get('name_on_bar'))           # name drawn on the bar: bank 4, colour 14 is the text
+    fcols, _ = quant(opaque, 13 if on_bar else 14)
     pq = Image.new('P', (1, 1))
     pq.putpalette((sum((list(c) for c in fcols), []) * (256 // len(fcols) + 1))[:768])
     fidx = list(rgb.quantize(palette=pq, dither=Image.NONE).getdata())
@@ -194,6 +195,8 @@ def main():
     for i, c in enumerate(fcols):
         pal[64 + 1 + i] = c
     pal[64 + 15] = tuple(t.get('clock_colour', TEXT))
+    if on_bar:
+        pal[64 + 14] = TEXT
     map_front = []
     for tx, ty, tl in tiles_of(fidx, SW, SH):
         map_front.append(add(tl) | (4 << 12) if any(tl) else 0)
@@ -234,7 +237,7 @@ def main():
     p = dict(cart_w=CW, cart_h=CH, label_x=lx, label_y=ly, label_w=lw, label_h=lh,
              label_cols=lay['label_colours'], foot_y=lay['foot_y'], pitch=lay['pitch'],
              side_permille=round(lay['side_scale'] * 1000), omega_x16=round(lay['spring_omega'] * 16),
-             name_row=lay['name_row'], name_bank=5, name_colour=1,
+             name_row=lay['name_row'], name_bank=4 if on_bar else 5, name_colour=14 if on_bar else 1,
              clock_row=lay['clock_row'], clock_col=lay['clock_col'], clock_bank=4, clock_colour=15,
              seat_w=lay['seated_size'][0], seat_h=lay['seated_size'][1],
              lip_x16=round(lay['lip_y'] * 16), seated_foot_x16=round(lay['seated_foot_y'] * 16),

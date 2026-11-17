@@ -1,0 +1,184 @@
+{
+  "name": "Art Book",
+  "labels": "labels-80x41.bin",
+  "art": "drawn by make_art.py: black pages, a slanted panel in each system's colour with a white line drawing, outline carts. Inspired by Art Book Next (github.com/anthonycaccese/art-book-next-es)",
+  "background": {
+    "file": "background_gba.png",
+    "size": [
+      240,
+      160
+    ]
+  },
+  "bar_back": {
+    "file": "slot_back.png",
+    "size": [
+      240,
+      34
+    ],
+    "at": [
+      0,
+      126
+    ]
+  },
+  "bar_front": {
+    "file": "slot_front.png",
+    "size": [
+      240,
+      34
+    ],
+    "at": [
+      0,
+      126
+    ]
+  },
+  "cart": {
+    "file": "cart_gba.png",
+    "size": [
+      96,
+      58
+    ]
+  },
+  "text_colour": [
+    236,
+    236,
+    240
+  ],
+  "clock_colour": [
+    140,
+    140,
+    150
+  ],
+  "layout": {
+    "label": [
+      8,
+      6,
+      80,
+      41
+    ],
+    "label_colours": 36,
+    "foot_y": 100,
+    "pitch": 104,
+    "side_scale": 0.85,
+    "lift": 4,
+    "side_dim": 6,
+    "spring_omega": 16,
+    "name_row": 19,
+    "clock_row": 0,
+    "clock_col": 24,
+    "system_name": [
+      0,
+      0
+    ],
+    "seated_size": [
+      96,
+      58
+    ],
+    "lip_y": 145,
+    "seated_foot_y": 197,
+    "seat_frames": 27,
+    "eject_frames": 18,
+    "name_on_bar": true
+  },
+  "systems": {
+    "gb": {
+      "file": "cart_gb.png",
+      "size": [
+        76,
+        80
+      ],
+      "label": [
+        11,
+        23,
+        53,
+        46
+      ],
+      "labels": "labels-gb-s.bin",
+      "pitch": 88,
+      "background": "background_gb.png",
+      "seated_size": [
+        76,
+        80
+      ]
+    },
+    "gbc": {
+      "file": "cart_gbc.png",
+      "size": [
+        76,
+        80
+      ],
+      "label": [
+        11,
+        23,
+        53,
+        47
+      ],
+      "labels": "labels-gbc-s.bin",
+      "pitch": 88,
+      "background": "background_gbc.png",
+      "seated_size": [
+        76,
+        80
+      ]
+    },
+    "nes": {
+      "file": "cart_nes.png",
+      "size": [
+        72,
+        80
+      ],
+      "label": [
+        30,
+        1,
+        35,
+        55
+      ],
+      "labels": "labels-nes-s.bin",
+      "pitch": 88,
+      "background": "background_nes.png",
+      "seated_size": [
+        72,
+        80
+      ]
+    },
+    "gg": {
+      "file": "cart_gg.png",
+      "size": [
+        80,
+        76
+      ],
+      "label": [
+        7,
+        11,
+        66,
+        46
+      ],
+      "labels": "labels-gg-s.bin",
+      "pitch": 88,
+      "background": "background_gg.png",
+      "seated_size": [
+        80,
+        76
+      ]
+    },
+    "sms": {
+      "file": "cart_sms.png",
+      "size": [
+        96,
+        61
+      ],
+      "label": [
+        4,
+        3,
+        88,
+        13
+      ],
+      "labels": "labels-sms-s.bin",
+      "pitch": 104,
+      "background": "background_sms.png",
+      "seated_size": [
+        96,
+        61
+      ]
+    }
+  }
+}

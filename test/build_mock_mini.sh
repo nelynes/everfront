@@ -10,7 +10,7 @@ rm -f $IMG
 mkfs.vfat -C -F 16 -s 4 -n EVERFRONT $IMG 16384 >/dev/null
 export MTOOLS_SKIP_CHECK=1
 mmd -i $IMG ::everfront ::everfront/themes "::Game Boy Advance"
-mcopy -i $IMG build/slot.thm build/shelf.thm ::everfront/themes/
+mcopy -i $IMG build/slot.thm build/shelf.thm build/artbook.thm ::everfront/themes/
 mcopy -i $IMG build/labels.bin build/labels-60x31.bin ::everfront/
 python3 - <<'PY'
 import re, os, subprocess

@@ -111,7 +111,7 @@ To build packs from your own scans on the command line instead, use `make_pack.p
 
 #### Pack names and sizes
 
-| System | Slot pack | Slot size | Shelf pack | Shelf size |
+| System | Slot pack | Slot size | Shelf and Art Book pack | Shelf and Art Book size |
 | --- | --- | --- | --- | --- |
 | GBA | `labels.bin` | 88x45 (the default) | `labels-80x41.bin` | 80x41 |
 | Game Boy | `labels-gb.bin` | 62x55 | `labels-gb-s.bin` | 53x46 |
@@ -176,7 +176,7 @@ Each release also has `everfront-mini-<version>.zip`, an early test build for th
 
 | | Pro | X5 Mini test build |
 | --- | --- | --- |
-| Shelf, both themes, GBA labels | Yes | Yes |
+| Shelf, all themes, GBA labels | Yes | Yes |
 | GBA games start | Yes | Yes |
 | Saves | Yes | **Not yet: games run without saving** |
 | Other systems' shelves | Yes | Not yet |

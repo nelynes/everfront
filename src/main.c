@@ -937,7 +937,15 @@ static void name_text(const char *s, u8 colour) {
     } else {
         for (int k = 0; k < n; k++) t[k] = s[k];
     }
-    for (u32 k = 0; k < 30 * 32; k++) tbuf[k] = 0;
+    if (th.name_bank == th.clock_bank) {           // name drawn on the bar: keep its pixels under the text
+        for (int k = 0; k < 30; k++) {
+            u16 e = th_map_front[th.name_row * 30 + k];
+            const u8 *src = (const u8 *) (VRAM + (e & 1023) * 32);
+            for (int b = 0; b < 32; b++) tbuf[k * 32 + b] = (e & 1023) ? src[b] : 0;
+        }
+    } else {
+        for (u32 k = 0; k < 30 * 32; k++) tbuf[k] = 0;
+    }
     int x0 = (240 - n * sp) / 2;
     if (x0 < 0) x0 = 0;
     for (int c = 0; c < n; c++) {

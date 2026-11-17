@@ -8,6 +8,9 @@
   - Each game gets the best label available: your own scans, then labels already on the card, then the slotPlus and Slot art sets, then the game's logo on a colour from its box art (as Cart Studio+ makes them).
   - You can swap or remove any label, then write all the packs straight to the card. In other browsers you get a zip.
 
+### Fixed
+- `make_pack.py`: games whose names have accented capitals (É, Ö…) now get their labels. Keys lowercase only A–Z, as EverFront does on the GBA.
+
 ## 0.7 — 2026-11-10
 
 ### Added

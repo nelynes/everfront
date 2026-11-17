@@ -47,11 +47,19 @@ def bgr555(c):
     r, g, b = c[:3]
     return (r >> 3) | ((g >> 3) << 5) | ((b >> 3) << 10)
 
+# The GBA lowercases only A-Z, byte by byte (src/main.c), so the keys must too: Python's
+# lower() would also change accented capitals (É, Ö...) and those games' labels would never be
+# found. The Label Maker's pack.js does the same.
+_ASCII_LOWER = bytes.maketrans(b'ABCDEFGHIJKLMNOPQRSTUVWXYZ', b'abcdefghijklmnopqrstuvwxyz')
+
+def _lower_bytes(s):
+    return s.encode().translate(_ASCII_LOWER)
+
 def key_name(s):
-    return (zlib.crc32(s.lower().encode()) & 0x3FFFFFFF) | 0x80000000
+    return (zlib.crc32(_lower_bytes(s)) & 0x3FFFFFFF) | 0x80000000
 
 def key_title(s):
-    return (zlib.crc32(s.split(' (')[0].split(' [')[0].lower().encode()) & 0x3FFFFFFF) | 0xC0000000
+    return (zlib.crc32(_lower_bytes(s.split(' (')[0].split(' [')[0])) & 0x3FFFFFFF) | 0xC0000000
 
 def key_code(code):
     return struct.unpack('<I', code.encode())[0]

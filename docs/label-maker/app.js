@@ -52,7 +52,9 @@ async function decode(bytes) {
 // labels already on the card, {kind: 'card', packs: Map(file -> label)}.
 async function optionsFor(g) {
   const opts = [];
-  const own = state.scans.get(keyName(g.stem)) ?? state.scans.get(keyTitle(g.stem));
+  // scans and roms matched with accents in one form (Mac-made names split them in two)
+  const nfc = g.stem.normalize('NFC');
+  const own = state.scans.get(keyName(nfc)) ?? state.scans.get(keyTitle(nfc));
   if (own) opts.push({ kind: 'scan', image: once(async () => decode(new Uint8Array(await own.arrayBuffer()))) });
 
   const onCard = new Map();
@@ -328,7 +330,7 @@ async function addScans(files) {
   let n = 0;
   for (const f of files) {
     if (!/\.(png|jpe?g|webp)$/i.test(f.name)) continue;
-    const name = f.name.replace(/\.[^.]*$/, '');
+    const name = f.name.replace(/\.[^.]*$/, '').normalize('NFC');
     state.scans.set(keyName(name), f);
     if (!state.scans.has(keyTitle(name))) state.scans.set(keyTitle(name), f);
     n++;

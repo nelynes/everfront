@@ -10,6 +10,7 @@
 
 ### Fixed
 - `make_pack.py`: games whose names have accented capitals (É, Ö…) now get their labels. Keys lowercase only A–Z, as EverFront does on the GBA.
+- `make_pack.py` and the Label Maker match accented names however the accents are stored (as one character, or a letter plus an accent mark as on a Mac).
 
 ## 0.7 — 2026-11-10
 

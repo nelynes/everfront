@@ -36,7 +36,7 @@ Keys (lookup in this order on the GBA):
   game code   the header's 4 ASCII bytes as a little-endian u32
   title only  (crc32(lowercase name up to the first " (") & 0x3FFFFFFF) | 0xC0000000
 """
-import os, re, struct, sys, zlib
+import os, re, struct, sys, unicodedata, zlib
 import warnings; warnings.filterwarnings('ignore')
 from PIL import Image, ImageEnhance, ImageFilter
 
@@ -60,6 +60,17 @@ def key_name(s):
 
 def key_title(s):
     return (zlib.crc32(_lower_bytes(s.split(' (')[0].split(' [')[0])) & 0x3FFFFFFF) | 0xC0000000
+
+# An accented letter can be one character (Windows) or a letter plus a combining accent (files
+# made on a Mac), and EverFront compares bytes. Labels are keyed under both forms.
+def _forms(s):
+    return {unicodedata.normalize('NFC', s), unicodedata.normalize('NFD', s)}
+
+def key_names(s):
+    return [key_name(f) for f in _forms(s)]
+
+def key_titles(s):
+    return [key_title(f) for f in _forms(s)]
 
 def key_code(code):
     return struct.unpack('<I', code.encode())[0]
@@ -185,12 +196,14 @@ def main():
             idx = list(blob[2 * NCOL:])
         bi = len(blobs)
         blobs.append(blob)
-        keys[key_name(stem)] = bi
+        for k in key_names(stem):
+            keys[k] = bi
         code = code_for(stem, by_name, by_title)
         if code:
             coded += 1
             keys.setdefault(key_code(code), bi)
-        weak.setdefault(key_title(stem), bi)
+        for k in key_titles(stem):
+            weak.setdefault(k, bi)
         if review:
             p = Image.new('RGB', (LW, LH), (40, 40, 40))
             p.putdata([cols[v] if v != 255 else (40, 40, 40) for v in idx])
@@ -205,12 +218,14 @@ def main():
             if '=' not in line or line.lstrip().startswith('#'):
                 continue
             rom, lab = (x.strip() for x in line.split('=', 1))
-            bi = keys.get(key_name(lab))
+            bi = keys.get(key_name(unicodedata.normalize('NFC', lab)))
             if bi is None:
                 print('alias: no scan named', lab)
                 continue
-            keys[key_name(rom)] = bi
-            keys.setdefault(key_title(rom), bi)
+            for k in key_names(rom):
+                keys[k] = bi
+            for k in key_titles(rom):
+                keys.setdefault(k, bi)
     order = sorted(keys)
     head = 16 + 8 * len(order)
     blob_size = 2 * NCOL + LW * LH
